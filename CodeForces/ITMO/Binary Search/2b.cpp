@@ -23,15 +23,55 @@
 #define s second
 
 using namespace std;
+<<<<<<< HEAD
+=======
+bool stringcut(vector<int> &arr, int k, double cutlen){
+	int cuts=0;
+	for(auto a : arr)
+		cuts += floor(a/cutlen);
+
+	return cuts>=k;
+}
+>>>>>>> 33f840205e5ba4f8805490c5464963bb477d4a57
 int main()
 {
 	std::ios::sync_with_stdio(false);
 	int T;
 	cin>>T;
+<<<<<<< HEAD
 	// cin.ignore(); must be there when using getline(cin, s)
 	while(T--)
 	{
 		
 	}
+=======
+
+	int k;
+	cin>>k;
+
+	std::vector<int> arr;
+	double x,tlen=0;
+	// cin.ignore(); must be there when using getline(cin, s)
+	while(T--){
+		cin>>x;
+		tlen+=x;
+		arr.push_back(x);
+	}
+
+	// cout<<tlen;
+
+	double l=0,r=tlen,m;
+	for(int i=0;i<100;i++) {
+	    m=l+(r-l)/2;
+
+	    if(stringcut(arr,k,m))
+	    	l=m;
+	    else
+	    	r=m;
+	}
+
+	cout<<setprecision(20)<<l<<'\n';
+
+>>>>>>> 33f840205e5ba4f8805490c5464963bb477d4a57
 	return 0;
 }
