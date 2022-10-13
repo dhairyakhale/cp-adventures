@@ -51,15 +51,17 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 bool ok(vector<int> &v, int k, int m) {
-	int diff = 0;
+	int groups = 0;
 
 	for(auto &a : v){
-		diff += a<m?0:(a - m);
+		groups += ceil(1.0*a/m);
 	}
+	debug(m,groups);
+	//diff = ceil(diff/(k - v.size() - 1));
 
-	diff = ceil(diff/(k - v.size() - 1));
 
-	return diff >= 0 && diff <= m;
+	//return diff >= 0 && diff <= m;
+	return groups <= k;
 }
 
 void solve(){
@@ -71,7 +73,7 @@ void solve(){
 	for(int i=0;i<n;i++)
 		cin>>groups[i];
 
-	int l=0, r = *max_element(groups.begin(),groups.end()), m, ans;
+	int l=1, r = *max_element(groups.begin(),groups.end()), m, ans;
 
 	while(l<=r) {
 
